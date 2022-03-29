@@ -12,7 +12,7 @@ pub mod pallet {
 	use frame_support::{pallet_prelude::*};
 	use frame_system::pallet_prelude::*;
 	use sp_std::vec::Vec;
-	use sp_core::H256;
+	// use sp_core::H256;
 
 	/// Configure the pallet by specifying the parameters and types on which it depends.
 	#[pallet::config]
@@ -31,8 +31,8 @@ pub mod pallet {
 	pub type Files<T: Config> = StorageMap<
 		_,
 		Blake2_128Concat,
-		H256,
-		Vec<H256>
+		Vec<u8>,
+		Vec<Vec<u8>>
 	>;
 
 	#[pallet::storage]
@@ -40,16 +40,16 @@ pub mod pallet {
 	pub type Chunks<T: Config> = StorageMap<
 		_,
 		Blake2_128Concat,
-		H256,
-		(H256, H256)
+		Vec<u8>,
+		(Vec<u8>, Vec<u8>)
 	>;
 
 	#[pallet::event]
 	#[pallet::generate_deposit(pub(super) fn deposit_event)]
 	// #[pallet::metadata(T::AccountId = "AccountId")]
 	pub enum Event<T: Config> {
-		FileCreated(T::AccountId, H256),
-		FileRemoved(T::AccountId, H256),
+		FileCreated(T::AccountId, Vec<u8>),
+		FileRemoved(T::AccountId, Vec<u8>),
 	//    ClaimTraslated(T::AccountId, Vec<u8>),
 	}
 
@@ -65,8 +65,8 @@ pub mod pallet {
 		#[pallet::weight(0)]
 		pub fn create_file(
 			origin: OriginFor<T>,
-			filehash: H256,
-			chunks: Vec<H256>
+			filehash: Vec<u8>,
+			chunks: Vec<Vec<u8>>
 		) -> DispatchResultWithPostInfo {
 			let sender = ensure_signed(origin)?;
 			ensure!(!Files::<T>::contains_key(&filehash), Error::<T>::FileAlreadyExist);

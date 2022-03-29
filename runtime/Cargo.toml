@@ -93,6 +93,7 @@ pallet-credit = { version = "3.0.0", default-features = false, path = "../pallet
 pallet-deeper-node = { version = "3.0.0", default-features = false, path = "../pallets/deeper-node" }
 pallet-credit-accumulation = { version = "3.0.0", default-features = false, path = "../pallets/credit-accumulation" }
 pallet-operation = { version = "3.0.0", default-features = false, path = "../pallets/operation" }
+pallet-storage = { version = "3.0.0", default-features = false, path = "../pallets/storage" }
 
 # frontier frame dependencies
 libsecp256k1 = { version = "0.6", default-features = false, optional = true }
@@ -153,6 +154,7 @@ std = [
 	"pallet-offences/std",
 	"pallet-preimage/std",
 	"pallet-proxy/std",
+	"pallet-storage/std",
 	"sp-core/std",
 	"pallet-randomness-collective-flip/std",
 	"sp-std/std",

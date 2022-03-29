@@ -1,6 +1,6 @@
 [package]
 name = 'pallet-storage'
-version = '0.0.1'
+version = '3.0.0'
 description = 'FRAME pallet storage.'
 authors = ['KJ <https://github.com/kernel1983>']
 homepage = 'https://substrate.dev'
@@ -14,7 +14,7 @@ targets = ['x86_64-unknown-linux-gnu']
 
 [dependencies]
 sp-std = { default-features = false, version = '3.0.0' }
-sp-core = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.17" }
+#sp-core = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.17" }
 codec = { package = "parity-scale-codec", version = "2.3.1", default-features = false, features = ["derive", "max-encoded-len"] }
 scale-info = { version = "1.0", default-features = false, features = ["derive"] }
 frame-support = { default-features = false, git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.17"  }
@@ -23,8 +23,8 @@ frame-system = { default-features = false, git = "https://github.com/paritytech/
 frame-benchmarking = { default-features = false, git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.17", optional = true }
 
 [dev-dependencies]
-sp-io ={ default-features = false, git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.17"  }
-sp-runtime = { default-features = false, git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.17" }
+#sp-io ={ default-features = false, git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.17"  }
+#sp-runtime = { default-features = false, git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.17" }
 
 
 [features]
