@@ -75,6 +75,7 @@ use sp_version::RuntimeVersion;
 use static_assertions::const_assert;
 
 pub use pallet_micropayment;
+use pallet_storage;
 
 use fp_rpc::{TransactionStatus, TxPoolResponse};
 use pallet_ethereum::{Call::transact, Transaction as EthereumTransaction};
@@ -476,6 +477,10 @@ impl pallet_operation::Config for Runtime {
     type Event = Event;
     type Currency = Balances;
     type WeightInfo = pallet_operation::weights::SubstrateWeight<Runtime>;
+}
+
+impl pallet_storage::Config for Runtime {
+    type Event = Event;
 }
 
 parameter_types! {
@@ -1361,7 +1366,8 @@ construct_runtime!(
         BaseFee: pallet_base_fee::{Pallet, Call, Storage, Config<T>, Event} = 82,
         DynamicFee: pallet_dynamic_fee::{Pallet, Call, Storage, Config, Inherent} = 83,
 
-        Operation: pallet_operation::{Pallet, Call, Storage,Event<T>} = 90,
+        Operation: pallet_operation::{Pallet, Call, Storage, Event<T>} = 90,
+        Storage: pallet_storage::{Pallet, Call, Storage, Event<T>} = 91,
     }
 );
 
